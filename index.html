@@ -21,6 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
     <!--script src="script.js"></script external-->
     <!--link rel="stylesheet" href="https://raw.githubusercontent.com/kayexnina/blacklist/master/style.css"crossnotworking-->
     <style>
@@ -178,7 +179,123 @@
             width: 100%;
             height: 100%;
         }
-    </style>
+
+/* Style for the shopping icon */
+.shopping-icon {
+      width: 70px;
+      height: 70px;
+      /*background-color: #000000;*/
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1; /* Ensure it's above other elements */
+    }
+
+/* Style for the modal */
+.modal {
+  display: none;
+  /* Hide the modal by default */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 90vw;
+  height: 90%;
+  max-height: 90vh;
+  background-color: rgba(116, 116, 116, 0.5);
+  overflow: auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 45px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
+  grid-gap: 10px;
+  overflow: auto;
+}
+
+/* Ensure horizontal scroll */
+.modalrow {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 20px; /* Add padding to the bottom to ensure space for scrollbar */
+}
+/* Adjust the product container size and spacing */
+.product-container {
+  width: 300px; /* Set the width of each product container */
+  height: 300px; /* Set the height of each product container */
+  padding: 50px;
+  border: 1px solid #ccc;
+  margin: 50px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Adjust the image width */
+.product-image {
+  width: 100%; /* Adjust the width of the image */
+  height: auto;
+  object-fit: contain; /* Maintain aspect ratio without cropping */
+  margin-bottom: 10px; /* Adjust spacing between image and text */
+}
+
+.product-name {
+  font-weight: bold;
+}
+
+.close-btn {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  cursor: pointer;
+  z-index: 1; /* Ensure the close button is above other elements */
+  font-size: 28px; /* Adjust the font size to make the close button bigger */
+  width: 40px; /* Set width to make the button square */
+  height: 40px; /* Set height to make the button square */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgba(126, 124, 124, 0.5);
+  color: white;
+}
+
+/* Positioning for the title */
+.title {
+  position: absolute;
+  top: 20px; /* Adjust the top position as needed */
+  left: 20px; /* Set left padding */
+  right: 20px; /* Set right padding */
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-size: 48px;
+  font-family: 'Eurostile Extended', sans-serif;
+  text-shadow: 0 0 20px #ffffff;
+ 
+  margin: 0; /* Reset margin for h1 */
+}
+
+</style>
     <title>Blacklist International</title>
 </head>
 
@@ -231,23 +348,193 @@
         });
 
         //cart
-        function showAlert() {
-            alert('COMING SOON! STAY TUNED, AGENTS!');
-        }
+        function openModal() {
+    document.getElementById("myModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+
+  function redirectTo(url) {
+    window.open(url, "_blank");
+  }
+        //cart
+        //function showAlert() {
+        //alert('COMING SOON! STAY TUNED, AGENTS!');
+        //}
     </script>
     <div class="header-container">
         <img src="https://raw.githubusercontent.com/kayexnina/blacklist/master/assets/WHITE%20LOGO.png" class="logo-img"
             alt="Logo">
         <img src="https://raw.githubusercontent.com/kayexnina/blacklist/master/assets/HEADER.png" class="img-fluid"
             alt="Header Image">
-
-        <div class="coming-soon-btn">
-            <div class="custom-div" onclick="showAlert()">
+    </div>
+    <!--div class="coming-soon-btn">
+            <div class="shopping-icon" onclick="openModal()">🛒</div>
                 <img src="https://raw.githubusercontent.com/kayexnina/blacklist/master/assets/IMAGES/shopping.png"
                     class="img-fluid" alt="Header Image">
             </div>
+        </div-->
+
+    <div class="container-fluid">
+        <div class="row justify-content-end">
+          <div class="col-auto">
+            <div class="shopping-icon" onclick="openModal()">🛒</div>
+          </div>
         </div>
-    </div>
+      </div>
+      
+      <div class="modal" id="myModal">
+          <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
+    <div class="title"><h1>PRODUCTS</h1></div>
+<!--div class="modalrow"-->
+
+            <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-BLCK-MHA-Sweat-Shorts-i.412731794.22662029968')">
+              <img class="product-image" src="assets/IMAGES/products/1.jpg" alt="Product 1">
+              <div class="product-name">BLCKBOX BLCK MHA Sweat Shorts</div>
+            </div>
+                  <!-- Product container for item 2 -->
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-BLCK-MHA-All-Might-Jersey-i.412731794.18786697076')">
+        <img class="product-image" src="assets/IMAGES/products/2.jpg" alt="Product 2">
+        <div class="product-name">BLCKBOX BLCK MHA All Might Jersey</div>
+      </div>
+
+      <!-- Product container for item 3 -->
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-BLCK-MHA-Shigaraki-Jersey-i.412731794.22387528088')">
+        <img class="product-image" src="assets/IMAGES/products/3.jpg" alt="Product 3">
+        <div class="product-name">BLCKBOX BLCK MHA Shigaraki Jersey</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-BLCK-CASETiFY-Mirror-Case-i.412731794.22260986215')">
+        <img class="product-image" src="assets/IMAGES/products/4.jpg" alt="Product 4">
+        <div class="product-name">BLCKBOX BLCK CASETiFY Mirror Case </div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-Blacklist-Rivalry-Fanwear-i.412731794.24950682869')">
+        <img class="product-image" src="assets/IMAGES/products/5.jpg" alt="Product 5">
+        <div class="product-name">BLCKBOX Blacklist Rivalry Fanwear </div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/S10-Blacklist-International-Quiccs-Jersey-(Ghost-Mode-White)-i.412731794.18332093510')">
+        <img class="product-image" src="assets/IMAGES/products/6.jpg" alt="Product 6">
+        <div class="product-name">Quiccs Jersey (Ghost Mode White)</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCK-S12-Stealth-Assault-Coach-Jacket-i.412731794.22182746516')">
+        <img class="product-image" src="assets/IMAGES/products/7.jpg" alt="Product 7">
+        <div class="product-name">BLCK S12 Stealth Assault Coach Jacket</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/Blacklist-International-Mousepad-i.412731794.21360107907')">
+        <img class="product-image" src="assets/IMAGES/products/8.jpg" alt="Product 8">
+        <div class="product-name">Blacklist International Mousepad</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-S11-Blacklist-International-V33Wise-Keychain-i.412731794.21083963852')">
+        <img class="product-image" src="assets/IMAGES/products/9.jpg" alt="Product 9">
+        <div class="product-name">BLCKBOX S11 Blacklist International V33Wise Keychain</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/Blacklist-International-Official-Light-Stick-V1-i.412731794.23457244093')">
+        <img class="product-image" src="assets/IMAGES/products/10.jpg" alt="Product 10">
+        <div class="product-name">Blacklist International Official Light Stick V1</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/Blacklist-International-Mesh-Short-i.412731794.18860108963?sp_atk=99ea6fc9-eaa3-4fa4-9be9-6b2ce4f59446&xptdk=99ea6fc9-eaa3-4fa4-9be9-6b2ce4f59446')">
+        <img class="product-image" src="assets/IMAGES/products/11.jpg" alt="Product 11">
+        <div class="product-name">Blacklist International Mesh Short</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/Tier-One-Day-One-Cap-i.412731794.21060113684?sp_atk=7dca9654-95bc-4ee2-afd4-851d128e4377&xptdk=7dca9654-95bc-4ee2-afd4-851d128e4377')">
+        <img class="product-image" src="assets/IMAGES/products/12.jpg" alt="Product 12">
+        <div class="product-name">Tier One - " Day One " Cap</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/Blacklist-International-S10-Sticker-Pack-i.412731794.18660113675?sp_atk=e5e8ecd4-41f5-44d8-8bf1-67bce399dd5c&xptdk=e5e8ecd4-41f5-44d8-8bf1-67bce399dd5c')">
+        <img class="product-image" src="assets/IMAGES/products/13.jpg" alt="Product 13">
+        <div class="product-name">Blacklist International S10 Sticker Pack</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-Blacklist-International-Bagtag-i.412731794.23854230477?sp_atk=4220d9e5-92a4-4b6c-99d7-0951d53adcad&xptdk=4220d9e5-92a4-4b6c-99d7-0951d53adcad')">
+        <img class="product-image" src="assets/IMAGES/products/14.jpg" alt="Product 14">
+        <div class="product-name">BLCKBOX Blacklist International Bagtag </div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-x-GGP-String-Bag-with-PIN-i.412731794.21280839810?sp_atk=51fe976c-24bf-4476-9ebf-811ac4f8bff5&xptdk=51fe976c-24bf-4476-9ebf-811ac4f8bff5')">
+        <img class="product-image" src="assets/IMAGES/products/15.jpg" alt="Product 15">
+        <div class="product-name">BLCKBOX x GGP String Bag with PIN</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/Tier-One-Colored-Jersey-i.412731794.15710803997?sp_atk=4c37a5ce-6854-49fc-b698-cb6b7a79d192&xptdk=4c37a5ce-6854-49fc-b698-cb6b7a79d192')">
+        <img class="product-image" src="assets/IMAGES/products/16.jpg" alt="Product 16">
+        <div class="product-name">Tier One Colored Jersey</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-Blacklist-International-Stainless-Steel-Keychain-i.412731794.23054235417?sp_atk=9e23b23b-937b-4ea0-8021-7f59c203d034&xptdk=9e23b23b-937b-4ea0-8021-7f59c203d034')">
+        <img class="product-image" src="assets/IMAGES/products/17.jpg" alt="Product 17">
+        <div class="product-name">BLCKBOX Blacklist International Stainless Steel Keychain</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/SIBOL-x-BLCKBOX-Jersey-(Blue)-i.412731794.20768193510?sp_atk=af894316-88ee-4a26-a3aa-ac850f93b46e&xptdk=af894316-88ee-4a26-a3aa-ac850f93b46e')">
+        <img class="product-image" src="assets/IMAGES/products/18.jpg" alt="Product 18">
+        <div class="product-name">SIBOL x BLCKBOX Jersey (Blue)</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/S10-Blacklist-International-x-Egg-Fiasco-Jersey-(Trouble-Monkey-Black)-i.412731794.19432093939?sp_atk=c1194071-fd97-4f82-9199-19280c356df3&xptdk=c1194071-fd97-4f82-9199-19280c356df3')">
+        <img class="product-image" src="assets/IMAGES/products/19.jpg" alt="Product 19">
+        <div class="product-name">S10 Blacklist International x Egg Fiasco Jersey (Trouble Monkey Black)</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/SIBOL-x-BLCKBOX-Jersey-i.412731794.17867930235?sp_atk=ad8d9e11-6fbb-4707-be07-eff4016c2cbd&xptdk=ad8d9e11-6fbb-4707-be07-eff4016c2cbd')">
+        <img class="product-image" src="assets/IMAGES/products/20.jpg" alt="Product 20">
+        <div class="product-name">SIBOL x BLCKBOX Jersey</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-x-SIBOL-Blue-Jersey-2023-i.412731794.22742375584?sp_atk=212974ef-8612-467d-8256-fdaf365e4acf&xptdk=212974ef-8612-467d-8256-fdaf365e4acf')">
+        <img class="product-image" src="assets/IMAGES/products/21.jpg" alt="Product 21">
+        <div class="product-name">BLCKBOX x SIBOL Blue Jersey 2023</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-Blacklist-International-Beanie-i.412731794.22479731922?sp_atk=5f3373c0-82e9-4618-82c8-439967fc1a34&xptdk=5f3373c0-82e9-4618-82c8-439967fc1a34')">
+        <img class="product-image" src="assets/IMAGES/products/22.jpg" alt="Product 22">
+        <div class="product-name">BLCKBOX Blacklist International Beanie</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-x-SIBOL-White-Jersey-2023-i.412731794.23477919036?sp_atk=c5e02db9-d215-4581-991f-7743e7075c49&xptdk=c5e02db9-d215-4581-991f-7743e7075c49')">
+        <img class="product-image" src="assets/IMAGES/products/23.jpg" alt="Product 23">
+        <div class="product-name">BLCKBOX x SIBOL White Jersey 2023</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/SIBOL-x-BLCKBOX-Joggers-i.412731794.18805076043?sp_atk=2ee578b3-c0eb-4312-8f87-ca279c7b5ace&xptdk=2ee578b3-c0eb-4312-8f87-ca279c7b5ace')">
+        <img class="product-image" src="assets/IMAGES/products/24.jpg" alt="Product 24">
+        <div class="product-name">SIBOL x BLCKBOX - Joggers</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/SIBOL-x-BLCKBOX-T-Shirt-i.412731794.20002669552?sp_atk=1a3209a9-cdf2-4a11-adb9-66c63f0e0eb1&xptdk=1a3209a9-cdf2-4a11-adb9-66c63f0e0eb1')">
+        <img class="product-image" src="assets/IMAGES/products/25.jpg" alt="Product 25">
+        <div class="product-name">SIBOL x BLCKBOX T - Shirt</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-Blacklist-International-Flag-i.412731794.21192913823?sp_atk=3398ff3a-cf08-4659-a4d2-28cb82fe8f64&xptdk=3398ff3a-cf08-4659-a4d2-28cb82fe8f64')">
+        <img class="product-image" src="assets/IMAGES/products/26.jpg" alt="Product 26">
+        <div class="product-name">BLCKBOX Blacklist International Flag</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCK-x-QUICCS-Mecha-Coach-Jacket-i.412731794.21785009841?sp_atk=fa27bb24-6e17-47e9-bae0-672dcf9a9bbd&xptdk=fa27bb24-6e17-47e9-bae0-672dcf9a9bbd')">
+        <img class="product-image" src="assets/IMAGES/products/27.jpg" alt="Product 27">
+        <div class="product-name">BLCK x QUICCS Mecha Coach Jacket</div>
+      </div>
+
+      <div class="col-md-2 product-container" onclick="redirectTo('https://shopee.ph/BLCKBOX-x-SIBOL-Shirt-Version-2-i.412731794.20979770816?sp_atk=0ecda910-c0ac-4e25-b711-ab5427da7314&xptdk=0ecda910-c0ac-4e25-b711-ab5427da7314')">
+        <img class="product-image" src="assets/IMAGES/products/28.jpg" alt="Product 28">
+        <div class="product-name">BLCKBOX x SIBOL Shirt Version 2</div>
+      </div>
+</div>
+</div>
+
     <div class="divider"></div>
     <div class="container-fluid">
         <div class="row">
@@ -466,4 +753,5 @@
     </footer>
 
 </body>
+
 </html>
