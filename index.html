@@ -74,7 +74,7 @@
 
         p {
             text-align: justify;
-            font-size: 18px;
+            font-size: 20px;
             font-family: Arial, Helvetica, sans-serif;
             color: rgb(190, 190, 190);
         }
@@ -447,11 +447,11 @@
             }
 
             .card-body h6 {
-                font-size: 16px;
+                font-size: 26px;
             }
 
             .card-body p {
-                font-size: 10px;
+                font-size: 16px;
             }
 
             .card {
@@ -461,7 +461,7 @@
 
             h5 {
                 margin-top: 10%;
-                font-size: 14px;
+                font-size: 20px;
                 margin-bottom: -35px;
             }
 
@@ -501,6 +501,17 @@
                 margin-left: 0px;
             }
 
+            .carousel-item {
+                margin-top: 10%;
+            }
+
+            .card-body h6 {
+                font-size: 30px;
+            }
+
+            .social-media-container img {
+                width: 30px;
+            }
         }
 
         /* For large screens (1200px) */
@@ -550,6 +561,82 @@
                 position: inherit;
                 font-size: x-small;
                 right: -10px;
+            }
+        }
+
+
+        /* Media query for smaller screens */
+        @media screen and (width: 280px) {
+            .header-container {
+                padding: 0;
+                margin: 0;
+            }
+
+            .logo-img,
+            .img-fluid {
+                display: block;
+                height: auto;
+                margin: 0;
+            }
+
+            #shoppingIcon {
+                position: inherit;
+                font-size: x-small;
+                right: -10px;
+            }
+
+            .card-body h6 {
+                font-size: 14px;
+            }
+
+            .card-body p {
+                font-size: 8px;
+            }
+
+            h5 {
+                margin-top: 10%;
+                font-size: 10px;
+                margin-bottom: -35px;
+            }
+
+            .title h1 {
+                font-size: x-small;
+            }
+        }
+
+        @media (width: 1280px) {
+            .carousel-item {
+                margin-top: 20%;
+            }
+
+            .card-body h6 {
+                font-size: 18px;
+            }
+
+            .card-body p {
+                font-size: 14px;
+            }
+
+            .social-media-container img {
+                width: 30px;
+            }
+        }
+
+        @media (width: 1024px) {
+            .carousel-item {
+                margin-top: 20%;
+            }
+
+            .card-body h6 {
+                font-size: 18px;
+            }
+
+            .card-body p {
+                font-size: 12px;
+            }
+
+            .social-media-container img {
+                width: 30px;
             }
         }
     </style>
